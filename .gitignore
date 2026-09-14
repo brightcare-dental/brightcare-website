@@ -1,0 +1,25 @@
+# Secrets — real credentials live here, never in the repo
+public_html/includes/db.config.php
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Patient/media uploads written by the admin CMS at runtime
+public_html/assets/uploads/
+
+# Local working screenshots
+shots/
+
+# Editor / tooling
+.vscode/
+.idea/
+*.swp
+*~
+
+# Logs
+*.log
+
+# Unreferenced duplicates of assets/img/{logo,favicon}.png — kept on disk, not shipped
+public_html/Logo.png
+public_html/favicon.png

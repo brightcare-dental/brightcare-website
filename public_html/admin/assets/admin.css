@@ -1,0 +1,98 @@
+/* Bright Care — admin panel UI */
+:root{
+  --p:#2e9c8a;--pd:#1c7264;--sec:#2b474d;--ink:#1d343a;--mut:#6a7f86;
+  --line:#e4ebed;--bg:#f4f7f7;--card:#fff;--danger:#e2574c;--ok:#1f9d6b;
+  --radius:12px;--shadow:0 8px 24px -14px rgba(20,50,55,.4);
+  --font:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);font-size:15px;line-height:1.55}
+a{color:inherit;text-decoration:none}
+.i{width:20px;height:20px;flex:none}
+
+/* layout */
+.adm{display:flex;min-height:100vh}
+.side{width:248px;background:var(--sec);color:#cfe0e0;display:flex;flex-direction:column;position:fixed;inset:0 auto 0 0;z-index:40}
+.side__brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:1.15rem;color:#fff;padding:20px 22px;border-bottom:1px solid rgba(255,255,255,.08)}
+.side__brand small{font-weight:600;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--p);background:rgba(255,255,255,.08);padding:3px 7px;border-radius:6px;margin-left:auto}
+.side__logo{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,var(--p),#5fc4b1);display:grid;place-items:center;color:#fff;font-weight:800}
+.side__nav{flex:1;padding:14px 12px;overflow-y:auto;display:flex;flex-direction:column;gap:2px}
+.side__nav a,.side__view{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:10px;color:#bdd2d2;font-weight:600;font-size:.92rem;transition:.18s}
+.side__nav a:hover{background:rgba(255,255,255,.07);color:#fff}
+.side__nav a.on{background:var(--p);color:#fff;box-shadow:0 8px 18px -8px var(--p)}
+.side__view{margin:12px;border-top:1px solid rgba(255,255,255,.08);padding-top:16px}
+.side__view:hover{color:#fff}
+
+.main{flex:1;margin-left:248px;display:flex;flex-direction:column;min-width:0}
+.top{height:64px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:0 24px;position:sticky;top:0;z-index:30}
+.top__burger{display:none;background:none;border:0;cursor:pointer;color:var(--ink)}
+.top__title{font-size:1.15rem;font-weight:800}
+.top__user{margin-left:auto;display:flex;align-items:center;gap:16px;font-size:.9rem}
+.top__out{display:inline-flex;align-items:center;gap:6px;color:var(--danger);font-weight:700}
+.top__out .i{width:17px;height:17px}
+.content{padding:26px;max-width:1100px;width:100%}
+
+/* alerts */
+.alert{background:#e8f7f0;border:1px solid #b8e6d2;color:#147a52;padding:12px 16px;border-radius:10px;margin-bottom:18px;font-weight:600}
+.alert--err{background:#fdecea;border-color:#f5c4bf;color:#b5362b}
+
+/* cards / grid */
+.cards-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin-bottom:24px}
+.stat-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+.stat-card .n{font-size:2rem;font-weight:800;color:var(--sec)}
+.stat-card .l{color:var(--mut);font-size:.85rem;font-weight:600}
+.stat-card .ic{width:42px;height:42px;border-radius:11px;background:#e8f5f1;color:var(--p);display:grid;place-items:center;margin-bottom:12px}
+
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:22px}
+.panel__head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--line)}
+.panel__head h2{font-size:1.05rem}
+.panel__body{padding:20px}
+
+/* table */
+table.tbl{width:100%;border-collapse:collapse}
+.tbl th,.tbl td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);font-size:.9rem;vertical-align:middle}
+.tbl th{font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--mut)}
+.tbl tr:hover td{background:#fafcfc}
+.tbl img.thumb{width:46px;height:46px;border-radius:8px;object-fit:cover}
+.badge{display:inline-block;padding:3px 10px;border-radius:50px;font-size:.74rem;font-weight:700}
+.badge--on{background:#e3f6ec;color:#1f9d6b}.badge--off{background:#f1f2f4;color:#8a97a0}
+.badge--new{background:#fff3df;color:#c98415}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:7px;font-family:inherit;font-weight:700;font-size:.88rem;
+  padding:.6em 1.1em;border-radius:9px;border:0;cursor:pointer;transition:.2s;background:var(--p);color:#fff}
+.btn:hover{background:var(--pd)}
+.btn .i{width:16px;height:16px}
+.btn--sm{padding:.4em .8em;font-size:.8rem}
+.btn--ghost{background:#eef3f3;color:var(--sec)}.btn--ghost:hover{background:#e2eaea}
+.btn--danger{background:#fdecea;color:var(--danger)}.btn--danger:hover{background:#f8d7d3}
+.actions{display:flex;gap:6px}
+
+/* forms */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fld{margin-bottom:16px}
+.fld--full{grid-column:1/-1}
+.fld label{display:block;font-weight:700;font-size:.84rem;margin-bottom:6px;color:var(--sec)}
+.fld input,.fld select,.fld textarea{width:100%;padding:.7em .9em;border:1.5px solid var(--line);border-radius:9px;
+  font-family:inherit;font-size:.92rem;background:#fbfdfd;color:var(--ink);transition:.18s}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:0;border-color:var(--p);background:#fff;box-shadow:0 0 0 3px rgba(46,156,138,.13)}
+.fld textarea{min-height:90px;resize:vertical}
+.fld .hint{font-size:.78rem;color:var(--mut);margin-top:4px}
+.form-actions{display:flex;gap:10px;margin-top:8px}
+
+/* login */
+.login{min-height:100vh;display:grid;place-items:center;background:linear-gradient(135deg,var(--sec),#193b3b);padding:20px}
+.login__box{background:#fff;border-radius:18px;box-shadow:0 30px 70px -25px rgba(0,0,0,.5);padding:38px;width:100%;max-width:390px}
+.login__logo{width:54px;height:54px;border-radius:14px;background:linear-gradient(135deg,var(--p),#5fc4b1);display:grid;place-items:center;color:#fff;font-weight:800;font-size:1.5rem;margin:0 auto 16px}
+.login h1{text-align:center;font-size:1.4rem;margin-bottom:4px}
+.login p.sub{text-align:center;color:var(--mut);font-size:.88rem;margin-bottom:24px}
+
+@media(max-width:880px){
+  .side{transform:translateX(-100%);transition:.3s}
+  .side.open{transform:translateX(0)}
+  .main{margin-left:0}
+  .top__burger{display:grid;place-items:center}
+  .form-grid{grid-template-columns:1fr}
+}
+.editor-wrap .ql-container{min-height:220px;font-size:15px}
+.editor-wrap .ql-editor{min-height:220px}
