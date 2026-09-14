@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "*.php", "use": "vercel-php@0.7.3", "config": { "includeFiles": ["includes/**"] } },
+    { "src": "api/*.php", "use": "vercel-php@0.7.3", "config": { "includeFiles": ["includes/**"] } },
+    { "src": "admin/*.php", "use": "vercel-php@0.7.3", "config": { "includeFiles": ["includes/**", "admin/inc/**"] } },
+    { "src": "assets/**", "use": "@vercel/static" },
+    { "src": "admin/assets/**", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/assets/(.*)", "dest": "/assets/$1" },
+    { "src": "/admin/assets/(.*)", "dest": "/admin/assets/$1" },
+    { "src": "/includes/(.*)", "status": 404 },
+    { "src": "/admin/_install\\.php", "status": 404 },
+    { "src": "/admin/_cases\\.php", "status": 404 },
+    { "src": "/sitemap\\.xml", "dest": "/sitemap.php" },
+    { "src": "/robots\\.txt", "dest": "/robots.php" },
+    { "src": "/services/([a-z0-9-]+)/?$", "dest": "/service.php?s=$1" },
+    { "src": "/blog/([a-z0-9-]+)/?$", "dest": "/post.php?s=$1" },
+    { "src": "/case/([a-z0-9-]+)/?$", "dest": "/case.php?s=$1" },
+    { "src": "/admin/?$", "dest": "/admin/index.php" },
+    { "src": "/$", "dest": "/index.php" },
+    { "src": "/([a-z0-9-]+)\\.php$", "dest": "/$1.php" },
+    { "src": "/([a-z0-9-]+)/?$", "dest": "/$1.php" },
+    { "src": "/", "dest": "/index.php" }
+  ]
+}
