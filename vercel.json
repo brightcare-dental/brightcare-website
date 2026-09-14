@@ -2,44 +2,16 @@
   "version": 2,
   "builds": [
     {
-      "src": "public_html/*.php",
+      "src": "public_html/_app.php",
       "use": "vercel-php@0.9.0",
-      "config": { "includeFiles": "public_html/includes/**" }
-    },
-    {
-      "src": "public_html/api/*.php",
-      "use": "vercel-php@0.9.0",
-      "config": { "includeFiles": "public_html/includes/**" }
-    },
-    {
-      "src": "public_html/admin/*.php",
-      "use": "vercel-php@0.9.0",
-      "config": { "includeFiles": "public_html/{includes,admin/inc}/**" }
+      "config": { "includeFiles": "public_html/**" }
     },
     { "src": "public_html/assets/**", "use": "@vercel/static" },
     { "src": "public_html/admin/assets/**", "use": "@vercel/static" }
   ],
   "routes": [
-    { "src": "/includes/(.*)", "status": 404 },
-    { "src": "/public_html/includes/(.*)", "status": 404 },
-    { "src": "/admin/_(install|cases)\\.php", "status": 404 },
-
     { "src": "/assets/(.*)", "dest": "/public_html/assets/$1" },
     { "src": "/admin/assets/(.*)", "dest": "/public_html/admin/assets/$1" },
-
-    { "src": "/sitemap\\.xml", "dest": "/public_html/sitemap.php" },
-    { "src": "/robots\\.txt", "dest": "/public_html/robots.php" },
-
-    { "src": "/services/([a-z0-9-]+)/?$", "dest": "/public_html/service.php?s=$1" },
-    { "src": "/blog/([a-z0-9-]+)/?$", "dest": "/public_html/post.php?s=$1" },
-    { "src": "/case/([a-z0-9-]+)/?$", "dest": "/public_html/case.php?s=$1" },
-
-    { "src": "/admin/?$", "dest": "/public_html/admin/index.php" },
-    { "src": "/admin/([a-z0-9-]+)\\.php$", "dest": "/public_html/admin/$1.php" },
-
-    { "src": "/$", "dest": "/public_html/index.php" },
-    { "src": "/([a-z0-9-]+)\\.php$", "dest": "/public_html/$1.php" },
-    { "src": "/([a-z0-9-]+)/?$", "dest": "/public_html/$1.php" },
-    { "src": "/(.*)", "dest": "/public_html/index.php" }
+    { "src": "/(.*)", "dest": "/public_html/_app.php" }
   ]
 }
