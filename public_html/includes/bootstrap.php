@@ -77,6 +77,12 @@ function default_branches(): array {
     ];
 }
 
+/** q1() that returns null instead of throwing when the database is unreachable. */
+function q1_safe(string $sql, array $params = []): ?array {
+    try { return q1($sql, $params); }
+    catch (Throwable $e) { return null; }
+}
+
 function h($s): string { return htmlspecialchars((string)$s, ENT_QUOTES, 'UTF-8'); }
 
 /** Social links that are actually configured — a "#" placeholder renders nothing rather than a dead icon. */

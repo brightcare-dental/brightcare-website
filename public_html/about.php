@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/includes/bootstrap.php';
-$pg = q1('SELECT * FROM pages WHERE slug=? AND status=1', ['about']);
-$page = ['active'=>'about','title'=>($pg['seo_title']?:'About Us — '.s('clinic_name')),'description'=>($pg['seo_desc']?:'Learn about '.s('clinic_name').', a trusted dental clinic in Mangalapuram, Trivandrum.')];
+$pg = q1_safe('SELECT * FROM pages WHERE slug=? AND status=1', ['about']);
+$page = ['active'=>'about','title'=>(($pg['seo_title'] ?? '') ?: 'About Us — '.s('clinic_name')),'description'=>(($pg['seo_desc'] ?? '') ?: 'Learn about '.s('clinic_name').', a trusted dental clinic in Mangalapuram, Trivandrum.')];
 require __DIR__ . '/includes/header.php';
 $values = [['shield','Safety First','Strict, hospital-grade sterilisation on every visit.'],['heart','Patient Comfort','Gentle, painless techniques and a calming environment.'],['tech','Modern Dentistry','Digital X-rays, scanners and laser-assisted care.'],['check','Honest Care','Transparent pricing and only the treatment you need.']];
 ?>

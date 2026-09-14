@@ -8,6 +8,13 @@
  *
  * On a plain shared host, copy db.config.example.php to db.config.php and fill it in.
  */
+// A visitor must never see a PHP error. Set APP_DEBUG=1 to show them while developing.
+if (!getenv('APP_DEBUG')) {
+    ini_set('display_errors', '0');
+    ini_set('display_startup_errors', '0');
+}
+ini_set('log_errors', '1');
+
 $__cfg = is_file(__DIR__ . '/db.config.php') ? (require __DIR__ . '/db.config.php') : [];
 
 define('DB_HOST', getenv('DB_HOST') ?: ($__cfg['host'] ?? 'localhost'));

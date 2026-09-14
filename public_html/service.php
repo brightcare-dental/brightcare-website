@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/includes/bootstrap.php';
 $slug = preg_replace('/[^a-z0-9-]/', '', $_GET['s'] ?? '');
-$sv = $slug ? q1('SELECT * FROM services WHERE slug=? AND status=1', [$slug]) : null;
+$sv = $slug ? q1_safe('SELECT * FROM services WHERE slug=? AND status=1', [$slug]) : null;
 if (!$sv) { http_response_code(404); $page=['active'=>'services','title'=>'Service not found']; require __DIR__.'/includes/header.php'; echo '<section class="section"><div class="container" style="text-align:center"><h1>Service not found</h1><p><a class="btn btn--primary" href="/services">Back to Services</a></p></div></section>'; require __DIR__.'/includes/footer.php'; exit; }
 
 $page = ['active'=>'services','title'=>($sv['seo_title']?:$sv['title'].' — '.s('clinic_name')),'description'=>($sv['seo_desc']?:$sv['excerpt']),'keywords'=>$sv['seo_keywords']];
